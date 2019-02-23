@@ -1,4 +1,4 @@
-package com.logistic.forwarder.Service;
+package com.logistic.forwarder.service;
 
 import com.logistic.forwarder.domain.Customer;
 

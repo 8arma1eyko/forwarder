@@ -1,6 +1,6 @@
-package com.logistic.forwarder.Service.impl;
+package com.logistic.forwarder.service.impl;
 
-import com.logistic.forwarder.Service.CustomerService;
+import com.logistic.forwarder.service.CustomerService;
 import com.logistic.forwarder.domain.Customer;
 import com.logistic.forwarder.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
