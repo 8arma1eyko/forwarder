@@ -4,6 +4,7 @@ import com.logistic.forwarder.Service.CustomerService;
 import com.logistic.forwarder.domain.Customer;
 import com.logistic.forwarder.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public List<Customer> findAllCustomers(){
-        return customerRepository.findAll();
+        return customerRepository.findAll(sortByIdAsc());
     }
 
     @Override
@@ -41,5 +42,9 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public Customer updateCustomer(Customer customer) {
         return customerRepository.save(customer);
+    }
+
+    private Sort sortByIdAsc() {
+        return new Sort(Sort.Direction.ASC, "id");
     }
 }

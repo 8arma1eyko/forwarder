@@ -4,6 +4,7 @@ import com.logistic.forwarder.Service.CustomerService;
 import com.logistic.forwarder.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,7 +41,18 @@ public class CustomerController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     Customer updateCustomer(@PathVariable Long id, @RequestBody Customer customer){
-        return customerService.updateCustomer(customer);
+       // return customerService.updateCustomer(customer);
+        Customer currentCustomer = customerService.findCustomerById(id);
+
+//        if (currentCustomer==null) {
+//            System.out.println("User with id " + id + " not found");
+//            return new Customer(HttpStatus.NOT_FOUND);
+//        }
+
+        currentCustomer.setFirstname(customer.getFirstname());
+        currentCustomer.setLastname(customer.getLastname());
+
+        return customerService.updateCustomer(currentCustomer);
     }
 
     @DeleteMapping("/{id}")
